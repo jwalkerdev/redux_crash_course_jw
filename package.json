@@ -1,0 +1,14 @@
+{
+  "name": "my_redux_crash_course",
+  "version": "1.0.0",
+  "description": "redux crash course - traversy media",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "create-react-app": "^1.5.2"
+  }
+}
