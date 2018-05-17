@@ -15,3 +15,9 @@ cd reduxexample
 npm install --save react-redux@^5.0.7 redux@^3.7.2 redux-thunk@^2.2.0
 
 code .
+
+## Notes
+
+### Providing a store to react components
+
+In this tutorial, the author uses <Provider> from react-redux to attach the store to react components.

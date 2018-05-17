@@ -1,4 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions/postActions';
+
 
 // Using fetch - https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data
 // fetch(url) // Call the fetch function passing the url of the API as a parameter
@@ -19,12 +23,7 @@ class Posts extends Component {
 
   // For React 17, move to componentDidMount() or the constructor.
   UNSAFE_componentWillMount(){
-    console.log('Posts - Pre-Mount');
-    // Fetch posts from jsonplaceholder test json rest api
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then( data => {this.setState({posts: data})})
-      .catch(error => console.log('Error fetching posts: ' + error))
+    this.props.fetchPosts();
   }
 
   render() {
@@ -44,4 +43,13 @@ class Posts extends Component {
   }
 }
 
-export default Posts;
+Posts.propTypes = {
+  fetchPosts: PropTypes.func.isRequired,
+  posts: PropTypes.array.isRequired
+}
+
+const mapStateToProps = state => ({
+  posts: state.posts.items
+})
+
+export default connect(mapStateToProps, { fetchPosts })(Posts);
